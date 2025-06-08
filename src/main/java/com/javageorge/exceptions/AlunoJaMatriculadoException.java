@@ -1,5 +1,4 @@
 package com.javageorge.exceptions;
-
 public class AlunoJaMatriculadoException extends RuntimeException {
     public AlunoJaMatriculadoException(String message) {
         super(message);

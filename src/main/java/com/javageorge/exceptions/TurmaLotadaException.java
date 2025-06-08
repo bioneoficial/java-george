@@ -6,6 +6,6 @@ public class TurmaLotadaException extends RuntimeException {
     }
 
     public TurmaLotadaException() {
-        super("A turma já atingiu o limite de alunos.");
+        super("A turma atingiu o limite máximo de alunos.");
     }
 }

@@ -12,20 +12,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-package com.javageorge.entities;
-
-import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 @Entity
 @Table(name = "matriculas")
 @Getter

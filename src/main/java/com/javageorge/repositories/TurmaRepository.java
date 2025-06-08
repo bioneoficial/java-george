@@ -10,7 +10,7 @@ import java.util.List;
 
 @Repository
 public interface TurmaRepository extends JpaRepository<Turma, Integer> {
-    List<Turma> findByPeriodoLetivo(String periodoLetivo);
+    List<Turma> findByPeriodo(String periodo);
     List<Turma> findByProfessor(Professor professor);
     List<Turma> findByDisciplina(Disciplina disciplina);
 }

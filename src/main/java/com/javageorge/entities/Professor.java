@@ -1,5 +1,4 @@
 package com.javageorge.entities;
-
 import com.javageorge.exceptions.NotaInvalidaException;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -18,22 +17,38 @@ import java.util.List;
 @NoArgsConstructor
 public class Professor extends Pessoa {
 
+    @Column(unique = true, nullable = false)
+    private String siape;
+
+    @Column(nullable = false)
+    private String departamento;
+
     private String especialidade;
 
     private String tituloAcademico;
 
     @OneToMany(mappedBy = "professor", fetch = FetchType.LAZY)
-    private List<Turma> turmasMinistradas = new ArrayList<>();
+    private List<Turma> turmas = new ArrayList<>();
 
     public Professor(Integer codigoPessoa, String nome, String cpf, String email, 
-                    String endereco, String telefone, String especialidade, String tituloAcademico) {
+                   String endereco, String telefone, String siape, String departamento) {
         super(codigoPessoa, nome, cpf, email, endereco, telefone);
+        this.siape = siape;
+        this.departamento = departamento;
+    }
+
+    public Professor(Integer codigoPessoa, String nome, String cpf, String email, 
+                    String endereco, String telefone, String siape, String departamento,
+                    String especialidade, String tituloAcademico) {
+        super(codigoPessoa, nome, cpf, email, endereco, telefone);
+        this.siape = siape;
+        this.departamento = departamento;
         this.especialidade = especialidade;
         this.tituloAcademico = tituloAcademico;
     }
 
-    public List<Turma> getTurmasMinistradas() {
-        return Collections.unmodifiableList(turmasMinistradas);
+    public List<Turma> getTurmas() {
+        return Collections.unmodifiableList(turmas);
     }
 
     /**
@@ -61,7 +76,7 @@ public class Professor extends Pessoa {
         }
 
         // Verifica se o professor ministra a turma
-        if (!turmasMinistradas.contains(turma)) {
+        if (!turmas.contains(turma)) {
             throw new IllegalArgumentException("O professor não ministra esta turma");
         }
 
@@ -107,7 +122,7 @@ public class Professor extends Pessoa {
         }
 
         // Verifica se o professor ministra a turma da prova
-        if (!turmasMinistradas.contains(prova.getTurma())) {
+        if (!turmas.contains(prova.getTurma())) {
             throw new IllegalArgumentException("O professor não ministra a turma desta prova");
         }
 

@@ -1,13 +1,37 @@
-package com.javageorge.javageorge.model;
+package com.javageorge.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+package com.javageorge.entities;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
 @Table(name = "matriculas")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Matricula implements Serializable {
 
     @Id
@@ -31,67 +55,10 @@ public class Matricula implements Serializable {
     @OneToMany(mappedBy = "matricula", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Nota> notas = new ArrayList<>();
 
-    // Constructors
-    public Matricula() {
-    }
-
-    public Matricula(String status, LocalDate dataMatricula, Aluno aluno, Turma turma) {
-        this.status = status;
-        this.dataMatricula = dataMatricula;
-        this.aluno = aluno;
-        this.turma = turma;
-    }
-
-    // Getters and Setters
-    public Integer getCodigoMatricula() {
-        return codigoMatricula;
-    }
-
-    public void setCodigoMatricula(Integer codigoMatricula) {
-        this.codigoMatricula = codigoMatricula;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public LocalDate getDataMatricula() {
-        return dataMatricula;
-    }
-
-    public void setDataMatricula(LocalDate dataMatricula) {
-        this.dataMatricula = dataMatricula;
-    }
-
-    public Aluno getAluno() {
-        return aluno;
-    }
-
-    public void setAluno(Aluno aluno) {
-        this.aluno = aluno;
-    }
-
-    public Turma getTurma() {
-        return turma;
-    }
-
-    public void setTurma(Turma turma) {
-        this.turma = turma;
-    }
-
     public List<Nota> getNotas() {
-        return notas;
+        return Collections.unmodifiableList(notas);
     }
 
-    public void setNotas(List<Nota> notas) {
-        this.notas = notas;
-    }
-
-    // Helper methods
     public void addNota(Nota nota) {
         notas.add(nota);
         nota.setMatricula(this);

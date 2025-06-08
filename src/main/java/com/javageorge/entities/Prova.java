@@ -1,13 +1,23 @@
-package com.javageorge.javageorge.model;
+package com.javageorge.entities;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Entity
 @Table(name = "provas")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Prova implements Serializable {
 
     @Id
@@ -27,66 +37,45 @@ public class Prova implements Serializable {
     @OneToMany(mappedBy = "prova", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Nota> notas = new ArrayList<>();
 
-    // Constructors
-    public Prova() {
-    }
-
-    public Prova(LocalDate dataProva, Double peso, Turma turma) {
-        this.dataProva = dataProva;
-        this.peso = peso;
-        this.turma = turma;
-    }
-
-    // Getters and Setters
-    public Integer getCodigoProva() {
-        return codigoProva;
-    }
-
-    public void setCodigoProva(Integer codigoProva) {
-        this.codigoProva = codigoProva;
-    }
-
-    public LocalDate getDataProva() {
-        return dataProva;
-    }
-
-    public void setDataProva(LocalDate dataProva) {
-        this.dataProva = dataProva;
-    }
-
-    public Double getPeso() {
-        return peso;
-    }
-
-    public void setPeso(Double peso) {
-        this.peso = peso;
-    }
-
-    public Turma getTurma() {
-        return turma;
-    }
-
-    public void setTurma(Turma turma) {
-        this.turma = turma;
-    }
-
     public List<Nota> getNotas() {
-        return notas;
+        return Collections.unmodifiableList(notas);
     }
 
-    public void setNotas(List<Nota> notas) {
-        this.notas = notas;
-    }
-
-    // Helper methods
+    /**
+     * Adiciona uma nota à prova
+     * 
+     * @param nota A nota a ser adicionada
+     */
     public void addNota(Nota nota) {
         notas.add(nota);
         nota.setProva(this);
     }
 
+    /**
+     * Remove uma nota da prova
+     * 
+     * @param nota A nota a ser removida
+     */
     public void removeNota(Nota nota) {
         notas.remove(nota);
         nota.setProva(null);
+    }
+
+    /**
+     * Calcula a média das notas para esta prova
+     * 
+     * @return A média das notas ou 0 se não houver notas
+     */
+    public Double calcularMedia() {
+        if (notas.isEmpty()) {
+            return 0.0;
+        }
+
+        double soma = notas.stream()
+                .mapToDouble(Nota::getValor)
+                .sum();
+
+        return soma / notas.size();
     }
 
     @Override

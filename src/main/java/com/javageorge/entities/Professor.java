@@ -76,7 +76,7 @@ public class Professor extends Pessoa {
         }
 
         // Verifica se o professor ministra a turma
-        if (!turmas.contains(turma)) {
+        if (!turma.getProfessor().equals(this)) {
             throw new IllegalArgumentException("O professor não ministra esta turma");
         }
 
@@ -122,7 +122,7 @@ public class Professor extends Pessoa {
         }
 
         // Verifica se o professor ministra a turma da prova
-        if (!turmas.contains(prova.getTurma())) {
+        if (!prova.getTurma().getProfessor().equals(this)) {
             throw new IllegalArgumentException("O professor não ministra a turma desta prova");
         }
 
@@ -134,6 +134,9 @@ public class Professor extends Pessoa {
 
         // Adiciona a nota à prova
         prova.addNota(nota);
+
+        // Adiciona a nota à matrícula
+        matricula.addNota(nota);
 
         return nota;
     }

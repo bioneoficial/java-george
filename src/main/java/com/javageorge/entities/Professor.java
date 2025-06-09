@@ -16,6 +16,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 public class Professor extends Pessoa {
+    private static final long serialVersionUID = 1L;
 
     @Column(unique = true, nullable = false)
     private String siape;

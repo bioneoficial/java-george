@@ -15,6 +15,36 @@ Este é um projeto Spring Boot que utiliza Java 17, Spring Data JPA, Spring MVC,
 
 O servidor será iniciado na porta 8080 com o contexto `/api`.
 
+## Dados Iniciais
+
+O sistema inicializa automaticamente com dados de exemplo para facilitar os testes:
+
+### Professores
+- João Silva (Computação, especialista em Programação)
+- Maria Oliveira (Matemática, especialista em Álgebra)
+- Carlos Santos (Física, especialista em Mecânica)
+
+### Disciplinas
+- Programação I (60h)
+- Programação II (60h, pré-requisito: Programação I)
+- Estrutura de Dados (90h, pré-requisito: Programação II)
+- Álgebra Linear (60h)
+- Cálculo I (90h)
+
+### Alunos
+- 5 alunos com matrículas e dados completos
+
+### Turmas
+- Programação I (Prof. João Silva)
+- Programação II (Prof. João Silva)
+- Álgebra Linear (Profa. Maria Oliveira)
+- Cálculo I (Profa. Maria Oliveira)
+
+### Matrículas
+- Todos os alunos estão matriculados em Programação I
+- Os 3 primeiros alunos estão matriculados em Álgebra Linear
+- Os 3 últimos alunos estão matriculados em Cálculo I
+
 ## H2 Database
 
 Este projeto utiliza o H2 Database, um banco de dados em memória para desenvolvimento e testes.

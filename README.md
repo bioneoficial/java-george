@@ -65,6 +65,36 @@ Este projeto utiliza SpringDoc OpenAPI (anteriormente Swagger) para documentaç�
 - **JSON**: http://localhost:8080/api/v3/api-docs
 - **YAML**: http://localhost:8080/api/v3/api-docs.yaml
 
+## Endpoints da API
+
+A API possui endpoints para gerenciamento de alunos, professores e disciplinas:
+
+### Alunos
+- `GET /api/alunos` - Lista todos os alunos
+- `GET /api/alunos/{id}` - Busca um aluno por ID
+- `GET /api/alunos/matricula/{matricula}` - Busca um aluno pela matrícula única
+- `POST /api/alunos` - Cadastra um novo aluno
+- `PUT /api/alunos/{id}` - Atualiza um aluno existente
+- `DELETE /api/alunos/{id}` - Remove um aluno
+
+### Professores
+- `GET /api/professores` - Lista todos os professores
+- `GET /api/professores/{id}` - Busca um professor por ID
+- `GET /api/professores/especialidade/{especialidade}` - Lista professores por especialidade
+- `POST /api/professores` - Cadastra um novo professor
+- `PUT /api/professores/{id}` - Atualiza um professor existente
+- `DELETE /api/professores/{id}` - Remove um professor
+
+### Disciplinas
+- `GET /api/disciplinas` - Lista todas as disciplinas
+- `GET /api/disciplinas/{id}` - Busca uma disciplina por ID
+- `GET /api/disciplinas/nome/{nome}` - Busca uma disciplina pelo nome
+- `POST /api/disciplinas` - Cadastra uma nova disciplina
+- `PUT /api/disciplinas/{id}` - Atualiza uma disciplina existente
+- `DELETE /api/disciplinas/{id}` - Remove uma disciplina
+- `POST /api/disciplinas/{disciplinaId}/prerequisitos/{preRequisitoId}` - Adiciona um pré-requisito
+- `DELETE /api/disciplinas/{disciplinaId}/prerequisitos/{preRequisitoId}` - Remove um pré-requisito
+
 ## Características do Projeto
 
 - Spring Boot 3.2.5

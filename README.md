@@ -97,7 +97,7 @@ Este projeto utiliza SpringDoc OpenAPI (anteriormente Swagger) para documentaç�
 
 ## Endpoints da API
 
-A API possui endpoints para gerenciamento de alunos, professores e disciplinas:
+A API possui endpoints para gerenciamento de alunos, professores, disciplinas, turmas, provas e notas:
 
 ### Alunos
 - `GET /api/alunos` - Lista todos os alunos
@@ -124,6 +124,33 @@ A API possui endpoints para gerenciamento de alunos, professores e disciplinas:
 - `DELETE /api/disciplinas/{id}` - Remove uma disciplina
 - `POST /api/disciplinas/{disciplinaId}/prerequisitos/{preRequisitoId}` - Adiciona um pré-requisito
 - `DELETE /api/disciplinas/{disciplinaId}/prerequisitos/{preRequisitoId}` - Remove um pré-requisito
+
+### Turmas
+- `GET /api/turmas` - Lista todas as turmas
+- `GET /api/turmas/{id}` - Busca uma turma por ID
+- `GET /api/turmas/periodo/{periodo}` - Lista turmas por período
+- `GET /api/turmas/professor/{professorId}` - Lista turmas por professor
+- `GET /api/turmas/disciplina/{disciplinaId}` - Lista turmas por disciplina
+- `POST /api/turmas` - Cadastra uma nova turma
+- `PUT /api/turmas/{id}` - Atualiza uma turma existente
+- `DELETE /api/turmas/{id}` - Remove uma turma
+
+### Provas
+- `GET /api/provas` - Lista todas as provas
+- `GET /api/provas/{id}` - Busca uma prova por ID
+- `GET /api/provas/turma/{turmaId}` - Lista provas por turma
+- `POST /api/provas` - Cadastra uma nova prova
+- `PUT /api/provas/{id}` - Atualiza uma prova existente
+- `DELETE /api/provas/{id}` - Remove uma prova
+
+### Notas
+- `GET /api/notas` - Lista todas as notas
+- `GET /api/notas/{id}` - Busca uma nota por ID
+- `GET /api/notas/aluno/{alunoId}/turma/{turmaId}` - Lista notas de um aluno em uma turma
+- `GET /api/notas/prova/{provaId}` - Lista notas de uma prova
+- `POST /api/notas` - Lança uma nova nota
+- `PUT /api/notas/{id}` - Atualiza uma nota existente
+- `DELETE /api/notas/{id}` - Remove uma nota
 
 ## Características do Projeto
 

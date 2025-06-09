@@ -30,6 +30,9 @@ public class Matricula implements Serializable {
     @Column(nullable = false)
     private LocalDate dataMatricula;
 
+    @Column(nullable = true)
+    private LocalDate dataCancelamento;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "aluno_id", nullable = false)
     private Aluno aluno;
